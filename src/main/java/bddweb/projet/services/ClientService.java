@@ -8,7 +8,8 @@ import bddweb.projet.services.dto.clientDTO.GetClientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,7 +55,7 @@ public class ClientService {
                 nom(client.getNom()).
                 prenom(client.getPrenom()).
                 adressePostale(client.getAdressePostale()).
-                dateCreation(client.getDateCreation()).
+                dateCreation(LocalDate.now()).
                 dateNaissance(client.getDateNaissance()).
                 telephone(client.getTelephonne()).
                 build();

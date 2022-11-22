@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.text.DateFormat;
 import java.util.Date;
@@ -27,8 +28,8 @@ public class Client {
     private String mail ;
     private String codeBanque ;
     private String codeGuichet ;
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
     private String adressePostale;
-    private Date dateCreation;
+    private LocalDate dateCreation;
 
 }
