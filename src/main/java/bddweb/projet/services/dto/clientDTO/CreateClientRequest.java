@@ -2,6 +2,7 @@ package bddweb.projet.services.dto.clientDTO;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 @Getter
 @Setter
@@ -11,7 +12,7 @@ import java.util.Date;
 public class CreateClientRequest {
     private String nom;
     private String prenom;
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
     private String telephone;
     private String adressePostale;
 }

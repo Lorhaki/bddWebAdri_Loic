@@ -2,6 +2,7 @@ package bddweb.projet.services.dto.clientDTO;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -13,8 +14,8 @@ public class GetClientResponse {
     private Long id;
     private String nom;
     private String prenom;
-    private Date datenaissance;
+    private LocalDate datenaissance;
     private String telephone;
     private String adressePostale;
-    private Date dateCreation;
+    private LocalDate dateCreation;
 }
