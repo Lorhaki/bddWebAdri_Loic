@@ -24,6 +24,7 @@ public class Client {
     private String mail ;
     private String codeBanque ;
     private String codeGuichet ;
+    private String dateNaissance;
 
     ArrayList<Carte> listeCarte = new ArrayList<>();
 }
