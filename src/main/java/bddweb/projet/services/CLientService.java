@@ -1,35 +1,43 @@
 package bddweb.projet.services;
 
+import bddweb.projet.entities.Client;
 import bddweb.projet.repositories.ClientsRepository;
+import bddweb.projet.services.dto.GetClientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-/*
-  {
-    "id": 100000,
-    "prenom": "Aurelien",
-    "nom": "Pietrzak",
-    "dateNaissance": "2022-11-28T18:46:19UTC",
-    "telephone": "0646214525",
-    "adressePostale": "75 rue de Paris",
-    "dateCreation": "2022-11-28T18:46:19UTC"
-  }
- */
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 @Service
 public class CLientService {
     @Autowired
     private ClientsRepository clientRepository;
 
-    public List<GetTodosResponse> getAllTodos(Long idAuteur) {
-        return this.todoRepository
-                .findByAuteurId(idAuteur)
+    public List<GetClientResponse> getAllClients(String nom, String prenom) {
+        return this.clientRepository
+                .findByNomAndPrenom(nom,prenom)
                 .stream()
-                .map(this::buildGetTodosResponse)
+                .map(this::buildGetClientsResponse)
                 .collect(Collectors.toList());
     }
+
+    private GetClientResponse buildGetClientsResponse(Client client) {
+        return GetClientResponse.builder().
+                id(client.getId()).
+                nom(client.getNom()).
+                prenom(client.getPrenom()).
+                adressePostale(client.getAdressePostale()).
+                dateCreation(client.getDateCreation()).
+                datenaissance(client.getDateNaissance()).
+                telephone(client.getTelephonne()).
+                build();
+    }
+
 
 
 }

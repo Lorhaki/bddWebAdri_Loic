@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.ArrayList;
-
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 @Getter
 @Setter
 @Entity
@@ -24,7 +26,9 @@ public class Client {
     private String mail ;
     private String codeBanque ;
     private String codeGuichet ;
-    private String dateNaissance;
+    private Date dateNaissance;
+    private String adressePostale;
+    private Date dateCreation;
 
     ArrayList<Carte> listeCarte = new ArrayList<>();
 }
