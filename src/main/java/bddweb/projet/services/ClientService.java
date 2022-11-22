@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.Locale;
 
 @Service
-public class CLientService {
+public class ClientService {
     @Autowired
     private ClientsRepository clientRepository;
 
