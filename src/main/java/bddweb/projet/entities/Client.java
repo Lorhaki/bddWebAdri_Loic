@@ -1,5 +1,29 @@
 package bddweb.projet.entities;
 
-public class Client {
+import lombok.Generated;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.util.ArrayList;
+
+@Getter
+@Setter
+@Entity
+public class Client {
+    @Id
+    @GeneratedValue
+    private long id;
+
+    private String nom ;
+    private String prenom ;
+    private int age ;
+    private String telephonne;
+    private String mail ;
+    private String codeBanque ;
+    private String codeGuichet ;
+
+    ArrayList<Carte> listeCarte = new ArrayList<>();
 }
