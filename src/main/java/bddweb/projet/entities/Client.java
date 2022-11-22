@@ -1,8 +1,6 @@
 package bddweb.projet.entities;
 
-import lombok.Generated;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +11,9 @@ import java.util.Date;
 import java.util.Locale;
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Client {
     @Id
@@ -30,5 +31,4 @@ public class Client {
     private String adressePostale;
     private Date dateCreation;
 
-    ArrayList<Carte> listeCarte = new ArrayList<>();
 }

@@ -2,18 +2,18 @@ package bddweb.projet.controllers;
 
 import bddweb.projet.controllers.communs.HttpErreurFonctionnelle;
 import bddweb.projet.services.ClientService;
+import bddweb.projet.services.dto.clientDTO.CreateClientRequest;
+import bddweb.projet.services.dto.clientDTO.CreateClientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("clients")
 public class ClientController {
     @Autowired
-    private ClientService cLientService;
+    private ClientService clientService;
 
     @GetMapping
     private ResponseEntity getCLients(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom){
@@ -27,7 +27,12 @@ public class ClientController {
                     .badRequest()
                     .body(HttpErreurFonctionnelle.builder().message("le prenom est obligatoire").build());
         }
-        return ResponseEntity.ok().body(this.cLientService.getAllClients(nom,prenom));
+        return ResponseEntity.ok().body(this.clientService.getAllClients(nom,prenom));
+    }
+
+    @PostMapping
+    private ResponseEntity<CreateClientResponse> createClient(@RequestBody CreateClientRequest request){
+        return ResponseEntity.created(null).body(this.clientService.createClient(request));
     }
 
 

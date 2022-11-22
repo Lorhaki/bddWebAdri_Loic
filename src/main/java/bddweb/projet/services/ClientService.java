@@ -2,16 +2,15 @@ package bddweb.projet.services;
 
 import bddweb.projet.entities.Client;
 import bddweb.projet.repositories.ClientsRepository;
-import bddweb.projet.services.dto.GetClientResponse;
+import bddweb.projet.services.dto.clientDTO.CreateClientRequest;
+import bddweb.projet.services.dto.clientDTO.CreateClientResponse;
+import bddweb.projet.services.dto.clientDTO.GetClientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 import java.util.stream.Collectors;
-
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 @Service
 public class ClientService {
@@ -26,6 +25,18 @@ public class ClientService {
                 .collect(Collectors.toList());
     }
 
+    public CreateClientResponse createClient(CreateClientRequest clientToCreate){
+        Client clientToSave = this.clientRepository.save(Client.builder()
+                .nom(clientToCreate.getNom())
+                .prenom(clientToCreate.getPrenom())
+                .dateNaissance(clientToCreate.getDateNaissance())
+                .adressePostale(clientToCreate.getAdressePostale())
+                .telephonne(clientToCreate.getTelephone())
+                .build());
+
+        return buildCreateClientResponse(this.clientRepository.save(clientToSave));
+    }
+
     private GetClientResponse buildGetClientsResponse(Client client) {
         return GetClientResponse.builder().
                 id(client.getId()).
@@ -37,6 +48,19 @@ public class ClientService {
                 telephone(client.getTelephonne()).
                 build();
     }
+    private CreateClientResponse buildCreateClientResponse(Client client){
+        return CreateClientResponse.builder().
+                id(client.getId()).
+                nom(client.getNom()).
+                prenom(client.getPrenom()).
+                adressePostale(client.getAdressePostale()).
+                dateCreation(client.getDateCreation()).
+                dateNaissance(client.getDateNaissance()).
+                telephone(client.getTelephonne()).
+                build();
+    }
+
+
 
 
 

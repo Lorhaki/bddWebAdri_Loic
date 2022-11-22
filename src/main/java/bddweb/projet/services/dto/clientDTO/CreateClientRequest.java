@@ -1,20 +1,17 @@
-package bddweb.projet.services.dto;
+package bddweb.projet.services.dto.clientDTO;
 
 import lombok.*;
 
 import java.util.Date;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class GetClientResponse {
-    private Long id;
+public class CreateClientRequest {
     private String nom;
     private String prenom;
-    private Date datenaissance;
+    private Date dateNaissance;
     private String telephone;
     private String adressePostale;
-    private Date dateCreation;
 }
