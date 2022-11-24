@@ -1,5 +1,6 @@
 package bddweb.projet.services;
 
+import bddweb.projet.controllers.communs.BadRequestException;
 import bddweb.projet.entities.Client;
 import bddweb.projet.repositories.ClientsRepository;
 import bddweb.projet.services.dto.clientDTO.CreateClientRequest;
@@ -26,7 +27,7 @@ public class ClientService {
                 .collect(Collectors.toList());
     }
 
-    public CreateClientResponse createClient(CreateClientRequest clientToCreate){
+    public CreateClientResponse createClient(CreateClientRequest clientToCreate)throws BadRequestException {
         Client clientToSave = this.clientRepository.save(Client.builder()
                 .nom(clientToCreate.getNom())
                 .prenom(clientToCreate.getPrenom())

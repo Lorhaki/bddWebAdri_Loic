@@ -1,5 +1,6 @@
 package bddweb.projet.controllers;
 
+import bddweb.projet.controllers.communs.BadRequestException;
 import bddweb.projet.controllers.communs.HttpErreurFonctionnelle;
 import bddweb.projet.services.ClientService;
 import bddweb.projet.services.dto.clientDTO.CreateClientRequest;
@@ -31,7 +32,7 @@ public class ClientController {
     }
 
     @PostMapping
-    private ResponseEntity<CreateClientResponse> createClient(@RequestBody CreateClientRequest request){
+    private ResponseEntity<CreateClientResponse> createClient(@RequestBody CreateClientRequest request) throws BadRequestException {
         return ResponseEntity.created(null).body(this.clientService.createClient(request));
     }
 
