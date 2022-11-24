@@ -1,4 +1,4 @@
-package bddweb.projet.services.dto.clientDTO;
+package bddweb.projet.services.dto;
 
 import lombok.*;
 
@@ -9,10 +9,12 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateClientRequest {
+public class CreateClientResponse {
+    private Long id;
     private String nom;
     private String prenom;
     private LocalDate dateNaissance;
     private String telephone;
     private String adressePostale;
+    private LocalDate dateCreation;
 }

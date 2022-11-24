@@ -3,14 +3,13 @@ package bddweb.projet.services;
 import bddweb.projet.controllers.communs.BadRequestException;
 import bddweb.projet.entities.Client;
 import bddweb.projet.repositories.ClientsRepository;
-import bddweb.projet.services.dto.clientDTO.CreateClientRequest;
-import bddweb.projet.services.dto.clientDTO.CreateClientResponse;
-import bddweb.projet.services.dto.clientDTO.GetClientResponse;
+import bddweb.projet.services.dto.CreateClientRequest;
+import bddweb.projet.services.dto.CreateClientResponse;
+import bddweb.projet.services.dto.GetClientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
