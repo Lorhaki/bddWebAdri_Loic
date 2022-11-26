@@ -1,6 +1,7 @@
 package bddweb.projet.controllers;
 
 import bddweb.projet.controllers.communs.HttpErreurFonctionnelle;
+import bddweb.projet.entities.Client;
 import bddweb.projet.services.ClientService;
 import bddweb.projet.services.CompteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("comptes")
 public class CompteController {
     @Autowired
-    private ClientService cLientService;
-
+    private CompteService compteService;
+    private Client client;
     @GetMapping
-    private ResponseEntity getComptes(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom){
-        if(nom.equals(" ")||nom.isEmpty()){
+    private ResponseEntity getComptes(@RequestParam("idClient")Long idClient){
+        if(idClient == null){
             return ResponseEntity
                     .badRequest()
-                    .body(HttpErreurFonctionnelle.builder().message("le nom est obligatoire").build());
+                    .body(HttpErreurFonctionnelle.builder().message("l'id du Client est obligatoire").build());
         }
-        if(prenom.equals(" ")||prenom.isEmpty()){
-            return ResponseEntity
-                    .badRequest()
-                    .body(HttpErreurFonctionnelle.builder().message("le prenom est obligatoire").build());
-        }
-        return ResponseEntity.ok().body(this.cLientService.getAllClients(nom,prenom));
+        return ResponseEntity.ok().body(this.compteService.getAllComptes(idClient));
     }
 }

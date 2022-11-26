@@ -1,24 +1,18 @@
-package bddweb.projet.entities;
+package bddweb.projet.services.dto.comptes;
 
+import bddweb.projet.entities.Client;
+import bddweb.projet.entities.Transaction;
+import bddweb.projet.entities.TypeCompte;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import java.util.ArrayList;
 
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-
-public class Compte {
-    @Id
-    @GeneratedValue
-    private Long id ;
-
+@Builder
+public class GetCompteResponse {
     private String iban;
     private float solde ;
     private String intituleCompte;
