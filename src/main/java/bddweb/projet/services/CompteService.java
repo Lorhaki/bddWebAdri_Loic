@@ -23,9 +23,9 @@ public class CompteService {
     @Autowired
     private ComptesRepository comptesRepository;
 
-    public List<GetCompteResponse> getAllComptes(Long idClient) {
+    public List<GetCompteResponse> getAllComptes(long idClient) {
         return this.comptesRepository
-                .findByClientId(idClient)
+                .findByTitulairesCompteId(idClient)
                 .stream()
                 .map(this::buildGetComptesResponse)
                 .collect(Collectors.toList());

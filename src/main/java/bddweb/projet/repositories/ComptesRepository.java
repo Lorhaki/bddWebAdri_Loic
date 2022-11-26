@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ComptesRepository extends JpaRepository<Compte, Long> {
-    List<Compte> findByClientId(Long id) ;
+public interface ComptesRepository extends JpaRepository<Compte,Long> {
+    List<Compte> findByTitulairesCompteId(long id) ;
 
 
 }

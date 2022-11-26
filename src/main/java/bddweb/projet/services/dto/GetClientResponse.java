@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class GetClientResponse {
-    private Long id;
+    private long id;
     private String nom;
     private String prenom;
     private LocalDate datenaissance;

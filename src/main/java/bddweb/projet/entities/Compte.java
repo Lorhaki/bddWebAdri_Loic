@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,13 +20,13 @@ import java.util.Date;
 public class Compte {
     @Id
     @GeneratedValue
-    private Long id ;
+    private long id ;
 
     private String iban;
     private float solde ;
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private ArrayList<Client> titulairesCompte ;
-    private ArrayList<Transaction> transactions;
+    private List<Client> titulairesCompte ;
+    private List<Transaction> transactions;
     private LocalDate dateCreation;
 }
