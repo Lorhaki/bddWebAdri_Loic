@@ -5,6 +5,7 @@ import bddweb.projet.entities.Transaction;
 import bddweb.projet.entities.TypeCompte;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Getter
@@ -14,9 +15,9 @@ import java.util.ArrayList;
 @Builder
 public class CreateCompteResponse {
     private String iban;
-    private float solde ;
     private String intituleCompte;
     private TypeCompte typeCompte;
     private ArrayList<Client> titulairesCompte ;
-    private ArrayList<Transaction> transactions;
+    private LocalDate dateCreation;
+
 }

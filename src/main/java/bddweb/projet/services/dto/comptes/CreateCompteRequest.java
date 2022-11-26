@@ -13,10 +13,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @Builder
 public class CreateCompteRequest {
-    private String iban;
-    private float solde ;
     private String intituleCompte;
     private TypeCompte typeCompte;
     private ArrayList<Client> titulairesCompte ;
-    private ArrayList<Transaction> transactions;
 }

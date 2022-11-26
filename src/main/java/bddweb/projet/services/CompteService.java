@@ -32,25 +32,21 @@ public class CompteService {
     }
 
     public CreateCompteResponse createCompte(CreateCompteRequest compteToCreate)throws BadRequestException {
-        Compte compteToSave = this.comptesRepository.save(Compte.builder())
+        Compte compteToSave = Compte.builder()
                 .intituleCompte(compteToCreate.getIntituleCompte())
                 .typeCompte(compteToCreate.getTypeCompte())
-                .titulaireCompte(compteToCreate.getTitulairesCompte())
-                .iban(compteToCreate.getIban())
-                .iban(compteToCreate.getIban())
-                .build());
+                .titulairesCompte(compteToCreate.getTitulairesCompte())
+                .build();
 
         return buildCreateCompteResponse(this.comptesRepository.save(compteToSave));
     }
-    private CreateClientResponse buildCreateCompteResponse(Client client){
-        return CreateClientResponse.builder().
-                id(client.getId()).
-                nom(client.getNom()).
-                prenom(client.getPrenom()).
-                adressePostale(client.getAdressePostale()).
+    private CreateCompteResponse buildCreateCompteResponse(Compte compte){
+        return CreateCompteResponse.builder().
+                intituleCompte(compte.getIntituleCompte()).
+                typeCompte(compte.getTypeCompte()).
+                titulairesCompte(compte.getTitulairesCompte()).
+                iban(compte.getIban()).
                 dateCreation(LocalDate.now()).
-                dateNaissance(client.getDateNaissance()).
-                telephone(client.getTelephonne()).
                 build();
     }
     private GetCompteResponse buildGetComptesResponse(Compte compte) {
