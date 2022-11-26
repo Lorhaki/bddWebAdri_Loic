@@ -3,9 +3,7 @@ package bddweb.projet.services;
 import bddweb.projet.controllers.communs.BadRequestException;
 import bddweb.projet.entities.Client;
 import bddweb.projet.repositories.ClientsRepository;
-import bddweb.projet.services.dto.CreateClientRequest;
-import bddweb.projet.services.dto.CreateClientResponse;
-import bddweb.projet.services.dto.GetClientResponse;
+import bddweb.projet.services.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,6 +36,18 @@ public class ClientService {
         return buildCreateClientResponse(this.clientRepository.save(clientToSave));
     }
 
+    public UpdateClientResponse updateClient(UpdateClientRequest client) throws BadRequestException{
+        Client nouveau = Client.builder()
+                .id(client.getId())
+                .nom(client.getNom())
+                .prenom(client.getPrenom())
+                .dateNaissance(client.getDatenaissance())
+                .adressePostale(client.getAdressePostale())
+                .telephonne(client.getTelephone())
+                .build();
+        return buildUpdateClientResponse(this.clientRepository.save(nouveau));
+    }
+
     private GetClientResponse buildGetClientsResponse(Client client) {
         return GetClientResponse.builder().
                 id(client.getId()).
@@ -61,8 +71,15 @@ public class ClientService {
                 build();
     }
 
-
-
-
-
+    private UpdateClientResponse buildUpdateClientResponse(Client client){
+        return UpdateClientResponse.builder().
+                id(client.getId()).
+                nom(client.getNom()).
+                prenom(client.getPrenom()).
+                adressePostale(client.getAdressePostale()).
+                dateModification(LocalDate.now()).
+                dateNaissance(client.getDateNaissance()).
+                telephone(client.getTelephonne()).
+                build();
+    }
 }
