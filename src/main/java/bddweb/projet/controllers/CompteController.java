@@ -19,6 +19,7 @@ public class CompteController {
     @Autowired
     private CompteService compteService;
     private Client client;
+
     @GetMapping
     private ResponseEntity getComptes(@RequestParam("idClient")Long idClient){
         if(idClient == null){

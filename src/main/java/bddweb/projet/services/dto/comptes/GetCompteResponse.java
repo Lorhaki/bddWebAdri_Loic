@@ -17,6 +17,6 @@ public class GetCompteResponse {
     private float solde ;
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private ArrayList<Client> titulairesCompte ;
+    private ArrayList<Client> titulairesCompte = new ArrayList<Client>();
     private ArrayList<Transaction> transactions;
 }

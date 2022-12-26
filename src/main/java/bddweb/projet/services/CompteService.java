@@ -3,6 +3,7 @@ package bddweb.projet.services;
 import bddweb.projet.controllers.communs.BadRequestException;
 import bddweb.projet.entities.Client;
 import bddweb.projet.entities.Compte;
+import bddweb.projet.entities.Transaction;
 import bddweb.projet.repositories.ComptesRepository;
 //import bddweb.projet.services.dto.GetCompteResponse;
 import bddweb.projet.services.dto.CreateClientRequest;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,7 +46,7 @@ public class CompteService {
         return CreateCompteResponse.builder().
                 intituleCompte(compte.getIntituleCompte()).
                 typeCompte(compte.getTypeCompte()).
-                titulairesCompte(compte.getTitulairesCompte()).
+                titulairesCompte((ArrayList<Client>) compte.getTitulairesCompte()).
                 iban(compte.getIban()).
                 dateCreation(LocalDate.now()).
                 build();
@@ -55,8 +57,8 @@ public class CompteService {
                 solde(compte.getSolde()).
                 intituleCompte(compte.getIntituleCompte()).
                 typeCompte(compte.getTypeCompte()).
-                titulairesCompte(compte.getTitulairesCompte()).
-                transactions(compte.getTransactions()).
+                titulairesCompte((ArrayList<Client>) compte.getTitulairesCompte()).
+                transactions((ArrayList<Transaction>) compte.getTransactions()).
                 build();
     }
 

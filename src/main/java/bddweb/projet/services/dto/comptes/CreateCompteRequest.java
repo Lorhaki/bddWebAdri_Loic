@@ -15,5 +15,5 @@ import java.util.ArrayList;
 public class CreateCompteRequest {
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private ArrayList<Client> titulairesCompte ;
+    private ArrayList<Client> titulairesCompte = new ArrayList<Client>() ;
 }
