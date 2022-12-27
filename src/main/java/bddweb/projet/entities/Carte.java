@@ -8,5 +8,7 @@ import lombok.Setter;
 public class Carte {
     private int idCard;
     private String dateExpiration;
-    private Client titulaire ;
+    private String titulaireCarte;
+    private String numeroCarte ;
+    private int code ;
 }

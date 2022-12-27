@@ -6,8 +6,6 @@ import bddweb.projet.entities.Compte;
 import bddweb.projet.entities.Transaction;
 import bddweb.projet.repositories.ComptesRepository;
 //import bddweb.projet.services.dto.GetCompteResponse;
-import bddweb.projet.services.dto.CreateClientRequest;
-import bddweb.projet.services.dto.CreateClientResponse;
 import bddweb.projet.services.dto.comptes.CreateCompteRequest;
 import bddweb.projet.services.dto.comptes.CreateCompteResponse;
 import bddweb.projet.services.dto.comptes.GetCompteResponse;
