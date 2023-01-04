@@ -3,7 +3,6 @@ package bddweb.projet.services.dto.comptes;
 import bddweb.projet.entities.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -22,7 +21,6 @@ public class GetCompteResponse {
     @Getter
     @Setter
     @NoArgsConstructor
-    @Builder
     public static class GetTitulairesCompteResponse {
         private long idClient;
     }
@@ -30,7 +28,6 @@ public class GetCompteResponse {
     @Getter
     @Setter
     @NoArgsConstructor
-    @Builder
     public static class GetTransactionsCompteResponse{
         private long id;
         private double montant;
