@@ -61,7 +61,16 @@ public class ClientService {
                 build();
     }
 
-
+//permet de savoir si au moins un client avec un certain id existe
+    public boolean existeId(long id)
+    {
+        return !this.clientRepository
+                .findById(id)
+                .stream()
+                .map(this::buildGetClientsResponse)
+                .collect(Collectors.toList())
+                .isEmpty();
+    }
 
 
 
