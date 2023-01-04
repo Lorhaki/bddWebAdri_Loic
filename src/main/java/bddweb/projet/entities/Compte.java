@@ -2,9 +2,7 @@ package bddweb.projet.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +24,11 @@ public class Compte {
     private float solde ;
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private List<Client> titulairesCompte ;
+    @ManyToMany
+    private List<Client> titulairesCompte;
+    @ManyToMany
     private List<Transaction> transactions;
+    @ManyToOne
+    private List<Carte> cartes;
     private LocalDate dateCreation;
 }

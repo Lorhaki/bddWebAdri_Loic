@@ -1,8 +1,6 @@
 package bddweb.projet.services.dto.comptes;
 
-import bddweb.projet.entities.Client;
-import bddweb.projet.entities.Transaction;
-import bddweb.projet.entities.TypeCompte;
+import bddweb.projet.entities.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -20,4 +18,24 @@ public class GetCompteResponse {
     private TypeCompte typeCompte;
     private List<Client> titulairesCompte;
     private List<Transaction> transactions;
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @Builder
+    public static class GetTitulairesCompteResponse {
+        private long idClient;
+    }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @Builder
+    public static class GetTransactionsCompteResponse{
+        private long id;
+        private double montant;
+        private TypeTransaction typeTransaction;
+        private TypeSource typeSource;
+        private long idSource;
+    }
 }

@@ -20,4 +20,12 @@ public class CreateCompteResponse {
     private List<Client> titulairesCompte = new ArrayList<Client>();
     private LocalDate dateCreation;
 
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @Builder
+    public static class CreateCompteClientResponse {
+        private long idClient;
+    }
+
 }

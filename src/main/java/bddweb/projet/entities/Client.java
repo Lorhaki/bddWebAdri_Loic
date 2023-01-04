@@ -2,13 +2,12 @@ package bddweb.projet.entities;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 @Getter
 @Setter
@@ -31,5 +30,8 @@ public class Client {
     private LocalDate dateNaissance;
     private String adressePostale;
     private LocalDate dateCreation;
-
+    @ManyToMany
+    List<Compte> comptes;
+    @ManyToMany
+    List<Carte> cartes;
 }

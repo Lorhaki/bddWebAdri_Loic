@@ -17,4 +17,13 @@ public class CreateCompteRequest {
     private String intituleCompte;
     private TypeCompte typeCompte;
     private List<Client> titulairesCompte ;
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    public static class ClientCompteRequest {
+        private long idClient;
+    }
 }
