@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.lang.Math.abs;
+
 @Service
 public class CompteService {
 
@@ -50,14 +52,32 @@ public class CompteService {
                 build();
     }
     private GetCompteResponse buildGetComptesResponse(Compte compte) {
-        return GetCompteResponse.builder().
-                iban(compte.getIban()).
-                solde(compte.getSolde()).
-                intituleCompte(compte.getIntituleCompte()).
-                typeCompte(compte.getTypeCompte()).
-                titulairesCompte((List<Client>) compte.getTitulairesCompte()).
-                transactions((List<Transaction>) compte.getTransactions()).
-                build();
+        return GetCompteResponse.builder()
+                .iban(compte.getIban())
+                .solde(compte.getSolde())
+                .intituleCompte(compte.getIntituleCompte())
+                .typeCompte(compte.getTypeCompte())
+                .transactions(compte.getTransactions()
+                        .stream()
+                        .map(GTC -> GetCompteResponse.GetTransactionsCompteResponse
+                                .builder()
+                                .id(GTC.getId())
+                                .source(GTC.getSource())
+                                .idSource((long) GTC.getIdSource())
+                                .montant(abs(GTC.getMontant()))
+                                .typeTransaction(GTC.getTypeTransaction())
+                                //.typeSource()
+                                //IdSource du compte emetteur
+                                .build())
+                        .collect(Collectors.toList()))
+                .titulairesCompte(compte.getTitulairesCompte()
+                        .stream()
+                        .map(CPR -> GetCompteResponse.GetTitulairesCompteResponse
+                                .builder()
+                                .idClient(CPR.getId())
+                                .build())
+                        .collect(Collectors.toList()))
+                .build();
     }
 
 

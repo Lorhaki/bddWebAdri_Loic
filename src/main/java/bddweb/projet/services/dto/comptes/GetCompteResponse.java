@@ -34,8 +34,8 @@ public class GetCompteResponse {
     public static class GetTransactionsCompteResponse{
         private long id;
         private double montant;
-        private TypeTransaction typeTransaction;
-        private TypeSource typeSource;
+        private String typeTransaction;
+        private String source;
         private long idSource;
     }
 }

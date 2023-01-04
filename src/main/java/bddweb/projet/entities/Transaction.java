@@ -19,6 +19,7 @@ public class Transaction{
 
     private float montant;
     private String typeTransaction;
-    private String typeSource;
+    private String source;
+    private int idSource;
 }
 

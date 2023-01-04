@@ -17,7 +17,7 @@ public class ClientController {
     private ClientService clientService;
 
     @GetMapping
-    private ResponseEntity getCLients(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom){
+    private ResponseEntity getClient(@RequestParam("nom") String nom, @RequestParam("prenom") String prenom){
         if(nom.equals(" ")||nom.isEmpty()){
             return ResponseEntity
                     .badRequest()
