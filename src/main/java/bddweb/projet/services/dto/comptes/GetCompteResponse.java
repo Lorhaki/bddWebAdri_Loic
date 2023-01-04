@@ -6,6 +6,7 @@ import bddweb.projet.entities.TypeCompte;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,6 +18,6 @@ public class GetCompteResponse {
     private float solde ;
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private ArrayList<Client> titulairesCompte = new ArrayList<Client>();
-    private ArrayList<Transaction> transactions;
+    private List<Client> titulairesCompte;
+    private List<Transaction> transactions;
 }

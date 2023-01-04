@@ -44,7 +44,7 @@ public class CompteService {
         return CreateCompteResponse.builder().
                 intituleCompte(compte.getIntituleCompte()).
                 typeCompte(compte.getTypeCompte()).
-                titulairesCompte((ArrayList<Client>) compte.getTitulairesCompte()).
+                titulairesCompte((List<Client>) compte.getTitulairesCompte()).
                 iban(compte.getIban()).
                 dateCreation(LocalDate.now()).
                 build();
@@ -55,8 +55,8 @@ public class CompteService {
                 solde(compte.getSolde()).
                 intituleCompte(compte.getIntituleCompte()).
                 typeCompte(compte.getTypeCompte()).
-                titulairesCompte((ArrayList<Client>) compte.getTitulairesCompte()).
-                transactions((ArrayList<Transaction>) compte.getTransactions()).
+                titulairesCompte((List<Client>) compte.getTitulairesCompte()).
+                transactions((List<Transaction>) compte.getTransactions()).
                 build();
     }
 

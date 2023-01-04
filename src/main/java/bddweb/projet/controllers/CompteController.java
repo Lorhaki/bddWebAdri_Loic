@@ -28,7 +28,7 @@ public class CompteController {
     }
 
     @PostMapping
-    private ResponseEntity<CreateCompteResponse> createClient(@RequestBody CreateCompteRequest request) throws BadRequestException {
+    private ResponseEntity<CreateCompteResponse> createCompte(@RequestBody CreateCompteRequest request) throws BadRequestException {
         return ResponseEntity.created(null).body(this.compteService.createCompte(request));
     }
 

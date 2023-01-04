@@ -6,6 +6,7 @@ import bddweb.projet.entities.TypeCompte;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,5 +16,5 @@ import java.util.ArrayList;
 public class CreateCompteRequest {
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private ArrayList<Client> titulairesCompte = new ArrayList<Client>() ;
+    private List<Client> titulairesCompte ;
 }
