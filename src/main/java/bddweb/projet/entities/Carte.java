@@ -1,14 +1,27 @@
 package bddweb.projet.entities;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
+@Entity
 public class Carte {
-    private int idCard;
-    private String dateExpiration;
-    private String titulaireCarte;
+    @Id
     private String numeroCarte ;
-    private int code ;
+    private String codeCarte;
+    private String dateExpiration;
+
+
+    @ManyToOne
+    private Compte compteCarte;
+    @ManyToOne
+    private Client titulaireCarte;
 }

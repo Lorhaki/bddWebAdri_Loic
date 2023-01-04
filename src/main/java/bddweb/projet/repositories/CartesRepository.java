@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CartesRepository extends JpaRepository<Carte, Long> {
-    List<Carte> findByIban(String iban);
+public interface CartesRepository extends JpaRepository<Carte,String> {
+    List<Carte> findAllByIban(String iban);
 }
