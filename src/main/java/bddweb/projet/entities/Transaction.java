@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Transaction{
     @Id
     @GeneratedValue
-    private int id;
+    private int  id;
 
     private float montant;
     private String typeTransaction;

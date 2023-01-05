@@ -18,7 +18,7 @@ import java.util.Locale;
 public class Client {
     @Id
     @GeneratedValue
-    private long id;
+    private long idClient;
 
     private String nom ;
     private String prenom ;
