@@ -2,14 +2,13 @@ package bddweb.projet.services.dto.comptes;
 
 import bddweb.projet.entities.*;
 import lombok.*;
-
 import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@AllArgsConstructor
 public class GetCompteResponse {
     private String iban;
     private float solde ;
@@ -18,21 +17,27 @@ public class GetCompteResponse {
     private List<Client> titulairesCompte;
     private List<Transaction> transactions;
 
+    @Builder
     @Getter
     @Setter
+    @AllArgsConstructor
     @NoArgsConstructor
     public static class GetTitulairesCompteResponse {
         private long idClient;
     }
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    public static class GetTransactionsCompteResponse{
-        private long id;
-        private double montant;
-        private String typeTransaction;
-        private String source;
-        private long idSource;
+        @Builder
+        @Getter
+        @Setter
+        @AllArgsConstructor
+        @NoArgsConstructor
+        public static class GetTransactionsCompteResponse {
+            private long id;
+            private double montant;
+            private TypeTransaction typeTransaction;
+            private TypeSource source;
+            private long idSource;
+
+        }
     }
-}
+

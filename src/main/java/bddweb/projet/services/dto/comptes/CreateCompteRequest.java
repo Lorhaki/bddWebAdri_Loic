@@ -16,14 +16,14 @@ import java.util.List;
 public class CreateCompteRequest {
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private List<Client> titulairesCompte ;
+    private List<CreateClientCompteRequest> titulairesCompte ;
 
     @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
-    public static class ClientCompteRequest {
+    public static class CreateClientCompteRequest {
         private long idClient;
     }
 }

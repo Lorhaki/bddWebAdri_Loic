@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class CreationCarteResponse {
-    private Integer titulaireCarte ;
+    private Long titulaireCarte ;
     private String numeroCarte;
     private String dateExpiration ;
 

@@ -8,27 +8,25 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-
+@Builder
 public class Compte {
     @Id
     @GeneratedValue
     private long id ;
-
     private String iban;
     private float solde ;
     private String intituleCompte;
     private TypeCompte typeCompte;
     @ManyToMany
-    private List<Client> titulairesCompte;
-    @ManyToMany
+    private List<Client> titulairesComptes;
+    @OneToMany
     private List<Transaction> transactions;
-    @ManyToOne
+    @OneToMany
     private List<Carte> cartes;
     private LocalDate dateCreation;
 }

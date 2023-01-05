@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CartesRepository extends JpaRepository<Carte,String> {
     List<Carte> findAllByIban(String iban);
+    Carte findByNumCarte(String numeroCarte);
 }
