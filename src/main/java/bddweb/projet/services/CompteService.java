@@ -67,15 +67,15 @@ public class CompteService {
                                 .montant(abs(GTC.getMontant()))
                                 .typeTransaction(GTC.getTypeT())
                                 .build())
-                        .collect(Collectors.toList()))
-                        .titulairesCompte(compte.getTitulairesComptes()
+                        .collect(Collectors.toList())
+                        .titulairesComptes(compte.getTitulairesComptes()
                         .stream()
                         .map(CPR -> GetCompteResponse.GetTitulairesCompteResponse
                                 .builder()
                                 .idClient(CPR.getIdClient())
                                 .build())
                         .collect(Collectors.toList()))
-                .build();
+                .build());
     }
 
 

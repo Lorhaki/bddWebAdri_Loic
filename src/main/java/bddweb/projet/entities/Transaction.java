@@ -3,14 +3,10 @@ package bddweb.projet.entities;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
-
-import static bddweb.projet.entities.TypeTransaction.CREDIT;
-import static bddweb.projet.entities.TypeTransaction.DEBIT;
 
 @Getter
 @Setter
