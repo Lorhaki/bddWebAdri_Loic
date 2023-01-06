@@ -14,15 +14,18 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class CreateCompteResponse {
-    private String iban;
+
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private List<Client> titulairesCompte = new ArrayList<Client>();
+    private List<CreateCompteClientResponse> titulairesCompte;
+    private String iban;
     private LocalDate dateCreation;
 
     @Getter
     @Setter
+    @AllArgsConstructor
     @NoArgsConstructor
+    @Builder
     public static class CreateCompteClientResponse {
         private long idClient;
     }

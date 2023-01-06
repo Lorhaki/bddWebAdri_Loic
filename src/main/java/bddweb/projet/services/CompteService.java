@@ -53,7 +53,13 @@ public class CompteService {
         return CreateCompteResponse.builder().
                 intituleCompte(compte.getIntituleCompte()).
                 typeCompte(compte.getTypeCompte()).
-                titulairesCompte( compte.getTitulairesCompte()).
+                titulairesCompte(
+                        compte.getTitulairesCompte().stream()
+                                .map(CPR -> CreateCompteResponse.CreateCompteClientResponse
+                                        .builder()
+                                        .idClient(CPR.getId())
+                                        .build())
+                                .collect(Collectors.toList())).
                 iban(compte.getIban()).
                 dateCreation(LocalDate.now()).
                 build();
