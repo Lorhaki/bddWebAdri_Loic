@@ -20,13 +20,12 @@ public class Transaction {
     @GeneratedValue
     private long id;
 
+    @ManyToOne
+    private Compte compte;
 
     private TypeTransaction typeTransaction;
     private double montant;
     private LocalDateTime dateCreation;
-
-    @ManyToOne
-    private Compte compte;
     private TypeSource typeS;
     private int idSource;
 

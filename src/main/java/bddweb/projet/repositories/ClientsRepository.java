@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ClientsRepository extends JpaRepository<Client, Long> {
     List<Client> findByNomAndPrenom(String nom, String prenom);
+    Client findById(long id);
 }

@@ -62,15 +62,13 @@ public class ClientService {
     }
 
 //permet de savoir si au moins un client avec un certain id existe
-    public boolean existeId(long id)
+    public Client existeId(long id)
     {
-        return !this.clientRepository
-                .findById(id)
-                .stream()
-                .map(this::buildGetClientsResponse)
-                .collect(Collectors.toList())
-                .isEmpty();
+        System.out.println("bonjour");
+        return clientRepository.findById(id);
     }
+
+
 
     public PutClientResponse buildPutClientResponse(Client c){
         return PutClientResponse.builder()
@@ -105,12 +103,12 @@ public class ClientService {
             throw new BadRequestException("Attention le numéro de téléphone ne posséde pas le bon format.");
         }
 
-        Optional<Client> clientOpt = this.clientRepository.findById(request.getIdClient().longValue());
-        if (clientOpt.isEmpty()){
+        Client clientOpt = this.clientRepository.findById(request.getIdClient().longValue());
+        if (clientOpt==null){
             throw new BadRequestException("Aucun client ne correspond à l'id renseigné.");
         }
 
-        Client c = clientOpt.get();
+        Client c = clientOpt;
         Client toSave = Client.builder()
                 .id(c.getId())
                 .nom(request.getNom())

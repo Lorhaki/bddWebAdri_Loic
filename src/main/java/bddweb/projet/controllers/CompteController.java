@@ -15,23 +15,33 @@ import org.springframework.web.bind.annotation.*;
 public class CompteController {
     @Autowired
     private CompteService compteService;
+    @Autowired
     private ClientService clientService;
+
     private Client client;
 
     @GetMapping
-    private ResponseEntity getComptes(@RequestParam("idClient")Long idClient){
+    private ResponseEntity getComptes(@RequestParam(value = "idClient",required = false)long idClient) throws BadRequestException{
         try{
-            if(idClient == null|| idClient.equals("")){
+
+            if(idClient == 0){
                 return ResponseEntity
                         .badRequest()//400
                         .body(HttpErreurFonctionnelle.builder().message("l'id du Client est obligatoire").build());
             }
-            if(!this.clientService.existeId(idClient)){
+
+            else if(this.clientService.existeId(idClient) == null){
                 return ResponseEntity
                         .noContent()//204
                         .build();
             }
-            return ResponseEntity.ok().body(this.compteService.getAllComptes(idClient));
+
+            else
+            {
+                System.out.println("bonjour");
+                return ResponseEntity.ok().body(this.compteService.getAllComptes(idClient));
+            }
+
         }catch (Exception e)
         {
             return ResponseEntity
