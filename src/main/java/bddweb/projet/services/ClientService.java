@@ -49,6 +49,7 @@ public class ClientService {
                 telephone(client.getTelephonne()).
                 build();
     }
+
     private CreateClientResponse buildCreateClientResponse(Client client){
         return CreateClientResponse.builder().
                 id(client.getId()).
@@ -82,27 +83,6 @@ public class ClientService {
     }
 
     public UpdateClientResponse modifierClient(UpdateClientRequest client) throws BadRequestException {
-        if (client.getId() == 0){
-            throw new BadRequestException("Attention l'id du Client n'est pas renseigné.");
-        } else if (client.getPrenom() == null){
-            throw new BadRequestException("Attention aucun prénom n'est renseigné.");
-        } else if (client.getNom() == null){
-            throw new BadRequestException("Attention aucun nom est renseigné.");
-        } else if (client.getDateNaissance() == null){
-            throw new BadRequestException("Attention aucune date de naissance  est renseignée.");
-        } else if (client.getTelephone() == null){
-            throw new BadRequestException("Attention aucun numéro de téléphone est renseigné.");
-        } else if (client.getAdressePostale() == null){
-            throw new BadRequestException("Attention aucune adresse postale est renseignée.");
-        } else if (client.getPrenom().matches(".*\\d.*")){
-            throw new BadRequestException("Attention le prénom ne posséde pas le bon format.");
-        } else if (client.getNom().matches(".*\\d.*")){
-            throw new BadRequestException("Attention le nom ne posséde pas le bon format.");
-        } else if (!client.getTelephone().matches("(0|\\+33|0033)[1-9][0-9]{8}")){
-            throw new BadRequestException("Attention le numéro de téléphone ne posséde pas le bon format.");
-        }
-
-
         Client nouveau = Client.builder()
                 .id(client.getId())
                 .nom(client.getNom())

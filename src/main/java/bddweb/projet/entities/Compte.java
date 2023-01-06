@@ -30,4 +30,22 @@ Compte {
     @OneToMany(mappedBy = "compte")
     private List<Carte> cartes;
     private LocalDate dateCreation;
+
+    public void creerIban()
+    {
+        //String s = "";
+        int rand;
+        int numCompte = 0;
+        for(int i=0;i<11;i++)
+        {
+            rand= (int) (((int)(Math.random()*9)) * Math.pow(10, i));
+            //System.out.println("rand =" + rand);
+            numCompte += rand;
+            //System.out.println("numcompte=" + numCompte);
+        }
+        int rib =97 - (89 * 30003 + 15 * 20549 + 3 * numCompte) % 97;
+        String s = "FR76 " + "30003 " + "02054 " + numCompte + " " + rib;
+        //System.out.println(s);
+        this.iban = s;
+    }
 }

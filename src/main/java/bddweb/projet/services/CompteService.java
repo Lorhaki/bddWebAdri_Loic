@@ -45,6 +45,7 @@ public class CompteService {
                         map(c -> c.getIdClient()).
                         collect(Collectors.toList())))
                 .build();
+        compteToSave.creerIban();
 
         return buildCreateCompteResponse(this.comptesRepository.save(compteToSave));
     }
@@ -52,7 +53,7 @@ public class CompteService {
         return CreateCompteResponse.builder().
                 intituleCompte(compte.getIntituleCompte()).
                 typeCompte(compte.getTypeCompte()).
-                titulairesCompte((List<Client>) compte.getTitulairesCompte()).
+                titulairesCompte( compte.getTitulairesCompte()).
                 iban(compte.getIban()).
                 dateCreation(LocalDate.now()).
                 build();

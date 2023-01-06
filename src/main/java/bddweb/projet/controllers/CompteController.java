@@ -38,7 +38,6 @@ public class CompteController {
 
             else
             {
-                System.out.println("bonjour");
                 return ResponseEntity.ok().body(this.compteService.getAllComptes(idClient));
             }
 
