@@ -18,14 +18,8 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @DiscriminatorValue("V")
 public class VirementTransaction extends Transaction {
-    @Id
-    @GeneratedValue
-    private long idVirement;
 
     private String libelleVirement;
 
-    public long GetIdVirement() {
-        return idVirement;
-    }
 
 }

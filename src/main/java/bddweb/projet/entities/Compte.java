@@ -22,7 +22,7 @@ Compte {
     private String intituleCompte;
     private TypeCompte typeCompte;
     @ManyToMany
-    private List<Client> titulairesComptes;
+    private List<Client> titulairesCompte;
 
     @OneToMany(mappedBy = "compte")
     private List<Transaction> transactions;

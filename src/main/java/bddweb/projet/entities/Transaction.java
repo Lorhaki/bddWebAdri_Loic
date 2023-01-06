@@ -14,12 +14,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
 public class Transaction {
 
     @Id
     @GeneratedValue
-    private long idTransaction;
+    private long id;
 
 
     private TypeTransaction typeTransaction;

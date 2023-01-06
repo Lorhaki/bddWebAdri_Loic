@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TransactionsRepository extends JpaRepository<Transaction,Long> {
-    Transaction findByNumeroCompte(int numeroCompte);
+    Transaction findByCompteId(int numeroCompte);
 
 }

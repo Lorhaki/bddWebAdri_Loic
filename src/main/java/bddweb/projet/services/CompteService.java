@@ -40,7 +40,7 @@ public class CompteService {
         Compte compteToSave = Compte.builder()
                 .intituleCompte(compteToCreate.getIntituleCompte())
                 .typeCompte(compteToCreate.getTypeCompte())
-                .titulairesComptes(clientsRepository.findAllById(compteToCreate.getTitulairesCompte()
+                .titulairesCompte(clientsRepository.findAllById(compteToCreate.getTitulairesCompte()
                         .stream().
                         map(c -> c.getIdClient()).
                         collect(Collectors.toList())))
@@ -52,7 +52,7 @@ public class CompteService {
         return CreateCompteResponse.builder().
                 intituleCompte(compte.getIntituleCompte()).
                 typeCompte(compte.getTypeCompte()).
-                titulairesCompte((List<Client>) compte.getTitulairesComptes()).
+                titulairesCompte((List<Client>) compte.getTitulairesCompte()).
                 iban(compte.getIban()).
                 dateCreation(LocalDate.now()).
                 build();
@@ -68,14 +68,14 @@ public class CompteService {
                         .stream()
                         .map(GTC -> GetCompteResponse.GetTransactionsCompteResponse
                                 .builder()
-                                .id(GTC.getIdTransaction())
+                                .id(GTC.getId())
                                 .source(GTC.getTypeS())
                                 .idSource(GTC.getIdSource())
                                 .montant(abs(GTC.getMontant()))
                                 .typeTransaction(GTC.getTypeTransaction())
                                 .build())
                         .collect(Collectors.toList()))
-                .titulairesCompte(compte.getTitulairesComptes()
+                .titulairesCompte(compte.getTitulairesCompte()
                         .stream()
                         .map(CPR -> GetCompteResponse.GetTitulairesCompteResponse
                                 .builder()
