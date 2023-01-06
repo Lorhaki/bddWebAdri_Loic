@@ -1,40 +1,37 @@
 package bddweb.projet.entities;
 
+
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
+
+@Entity
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
+public class Transaction {
 
-public class Transaction{
     @Id
     @GeneratedValue
     private long idTransaction;
 
-    private TypeTransaction typeT;
+
+    private TypeTransaction typeTransaction;
     private double montant;
     private LocalDateTime dateCreation;
 
     @ManyToOne
     private Compte compte;
-
     private TypeSource typeS;
     private int idSource;
 
-/*
-    public void updatetypeVirement() {
-        if (this.getMontant() > 0) {
-            this.setTypeTransaction(CREDIT);
-        } else this.setTypeTransaction(DEBIT);
-    }*/
 }
+
 
 

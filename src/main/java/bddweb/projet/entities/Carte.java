@@ -1,10 +1,11 @@
 package bddweb.projet.entities;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,14 +15,17 @@ import javax.persistence.ManyToOne;
 @ToString
 @Entity
 public class Carte {
+
     @Id
-    private String numeroCarte ;
+    @GeneratedValue
+    private long id;
+    private String numeroCarte;
+
+    @ManyToMany
+    private List<Client> titulaireCarte;
+    private LocalDateTime dateExpiration;
     private String codeCarte;
-    private String dateExpiration;
-
 
     @ManyToOne
-    private Compte compteCarte;
-    @ManyToOne
-    private Client titulaireCarte;
+    Compte compte;
 }

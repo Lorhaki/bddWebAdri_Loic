@@ -72,7 +72,7 @@ public class CompteService {
                                 .source(GTC.getTypeS())
                                 .idSource(GTC.getIdSource())
                                 .montant(abs(GTC.getMontant()))
-                                .typeTransaction(GTC.getTypeT())
+                                .typeTransaction(GTC.getTypeTransaction())
                                 .build())
                         .collect(Collectors.toList()))
                 .titulairesCompte(compte.getTitulairesComptes()
