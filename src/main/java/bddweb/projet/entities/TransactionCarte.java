@@ -1,4 +1,5 @@
 package bddweb.projet.entities;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,18 +8,14 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
-
+import javax.persistence.ManyToOne;
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@DiscriminatorValue("V")
-public class VirementTransaction extends Transaction {
+public class TransactionCarte extends Transaction {
 
-    private String libelleVirement;
-
+    @ManyToOne
+    Carte carte;
 }

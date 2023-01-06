@@ -16,5 +16,5 @@ public class UpdateClientResponse {
     private LocalDate dateNaissance ;
     private String telephone;
     private String adressePostale ;
-    private String dateModification ;
+    private LocalDate dateModification ;
 }

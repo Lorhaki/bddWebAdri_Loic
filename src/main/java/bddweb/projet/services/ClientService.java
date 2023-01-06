@@ -64,15 +64,14 @@ public class ClientService {
 //permet de savoir si au moins un client avec un certain id existe
     public Client existeId(long id)
     {
-        System.out.println("bonjour");
         return clientRepository.findById(id);
     }
 
 
 
-    public PutClientResponse buildPutClientResponse(Client c){
-        return PutClientResponse.builder()
-                .idClient((int) c.getId())
+    public UpdateClientResponse buildPutClientResponse(Client c){
+        return UpdateClientResponse.builder()
+                .id((int) c.getId())
                 .prenom(c.getPrenom())
                 .nom(c.getNom())
                 .dateNaissance(c.getDateNaissance())
@@ -82,48 +81,50 @@ public class ClientService {
                 .build();
     }
 
-    public PutClientResponse modifierClient(PutClientRequest request) throws BadRequestException {
-        if (request.getIdClient() == null){
+    public UpdateClientResponse modifierClient(UpdateClientRequest client) throws BadRequestException {
+        if (client.getId() == 0){
             throw new BadRequestException("Attention l'id du Client n'est pas renseigné.");
-        } else if (request.getPrenom() == null){
+        } else if (client.getPrenom() == null){
             throw new BadRequestException("Attention aucun prénom n'est renseigné.");
-        } else if (request.getNom() == null){
+        } else if (client.getNom() == null){
             throw new BadRequestException("Attention aucun nom est renseigné.");
-        } else if (request.getDateNaissance() == null){
+        } else if (client.getDateNaissance() == null){
             throw new BadRequestException("Attention aucune date de naissance  est renseignée.");
-        } else if (request.getTelephone() == null){
+        } else if (client.getTelephone() == null){
             throw new BadRequestException("Attention aucun numéro de téléphone est renseigné.");
-        } else if (request.getAdressePostale() == null){
+        } else if (client.getAdressePostale() == null){
             throw new BadRequestException("Attention aucune adresse postale est renseignée.");
-        } else if (request.getPrenom().matches(".*\\d.*")){
+        } else if (client.getPrenom().matches(".*\\d.*")){
             throw new BadRequestException("Attention le prénom ne posséde pas le bon format.");
-        } else if (request.getNom().matches(".*\\d.*")){
+        } else if (client.getNom().matches(".*\\d.*")){
             throw new BadRequestException("Attention le nom ne posséde pas le bon format.");
-        } else if (!request.getTelephone().matches("(0|\\+33|0033)[1-9][0-9]{8}")){
+        } else if (!client.getTelephone().matches("(0|\\+33|0033)[1-9][0-9]{8}")){
             throw new BadRequestException("Attention le numéro de téléphone ne posséde pas le bon format.");
         }
 
-        Client clientOpt = this.clientRepository.findById(request.getIdClient().longValue());
-        if (clientOpt==null){
-            throw new BadRequestException("Aucun client ne correspond à l'id renseigné.");
-        }
 
-        Client c = clientOpt;
-        Client toSave = Client.builder()
-                .id(c.getId())
-                .nom(request.getNom())
-                .prenom(request.getPrenom())
-                .dateNaissance(request.getDateNaissance())
-                .telephonne(request.getTelephone())
-                .adressePostale(request.getAdressePostale())
-                .dateCreation(c.getDateCreation())
-                .comptes(c.getComptes())
-                .cartes(c.getCartes())
-                .codeBanque(c.getCodeBanque())
-                .codeGuichet(c.getCodeGuichet())
+        Client nouveau = Client.builder()
+                .id(client.getId())
+                .nom(client.getNom())
+                .prenom(client.getPrenom())
+                .dateNaissance(client.getDateNaissance())
+                .adressePostale(client.getAdressePostale())
+                .telephonne(client.getTelephone())
                 .build();
+        return buildUpdateClientResponse(this.clientRepository.save(nouveau));
+    }
 
-        return buildPutClientResponse(this.clientRepository.save(toSave));
+    private UpdateClientResponse buildUpdateClientResponse(Client client){
+        LocalDate d =LocalDate.now();
+        return UpdateClientResponse.builder().
+                id(client.getId()).
+                nom(client.getNom()).
+                prenom(client.getPrenom()).
+                adressePostale(client.getAdressePostale()).
+                dateModification(d).
+                dateNaissance(client.getDateNaissance()).
+                telephone(client.getTelephonne()).
+                build();
     }
 
 }

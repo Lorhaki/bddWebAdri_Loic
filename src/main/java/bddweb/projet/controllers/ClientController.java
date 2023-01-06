@@ -5,7 +5,7 @@ import bddweb.projet.controllers.communs.HttpErreurFonctionnelle;
 import bddweb.projet.controllers.communs.MessageErreurRequest;
 import bddweb.projet.services.ClientService;
 import bddweb.projet.services.dto.clients.CreateClientRequest;
-import bddweb.projet.services.dto.clients.PutClientRequest;
+import bddweb.projet.services.dto.clients.UpdateClientRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,13 +67,27 @@ public class ClientController {
     }
 
     @PutMapping
-    public ResponseEntity modifierClient(@RequestBody PutClientRequest request) {
+    public ResponseEntity modifierClient(@RequestBody UpdateClientRequest client) {
+
         try {
-            return ResponseEntity.ok().body(this.clientService.modifierClient(request));
-        } catch (BadRequestException b) {
-            return ResponseEntity.badRequest().body(new MessageErreurRequest(b.getMessage()));
-        } catch (Exception b) {
-            return ResponseEntity.internalServerError().body(new MessageErreurRequest("Le probléme viens du serveur."));
+            if(clientService.existeId(client.getId()) == null)
+            {
+                return ResponseEntity
+                        .badRequest()//400
+                        .body(new HttpErreurFonctionnelle("Impossible de trouver un client avec cette id"));
+            }
+            if(client.getPrenom() == null || client.getNom() == null || client.getDateNaissance() == null || client.getTelephone() == null || client.getAdressePostale() == null || client.getPrenom().isBlank() || client.getNom().isBlank())
+            {
+                return ResponseEntity
+                        .badRequest()
+                        .body(new HttpErreurFonctionnelle("Un des paramètres possède une erreur"));//400
+            }
+            return ResponseEntity.ok().body(this.clientService.modifierClient(client));
+        } catch (BadRequestException e) {
+            return ResponseEntity
+                    .internalServerError()//500
+                    .body(new MessageErreurRequest("Erreur serveur."));
         }
+
     }
 }
