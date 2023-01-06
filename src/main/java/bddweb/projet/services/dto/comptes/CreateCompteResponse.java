@@ -23,7 +23,6 @@ public class CreateCompteResponse {
     @Getter
     @Setter
     @NoArgsConstructor
-    @Builder
     public static class CreateCompteClientResponse {
         private long idClient;
     }

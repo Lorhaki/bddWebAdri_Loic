@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
+
 public class Transaction{
     @Id
     @GeneratedValue

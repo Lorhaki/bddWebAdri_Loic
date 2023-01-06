@@ -14,8 +14,8 @@ public class GetCompteResponse {
     private float solde ;
     private String intituleCompte;
     private TypeCompte typeCompte;
-    private List<Client> titulairesCompte;
-    private List<Transaction> transactions;
+    private List<GetTitulairesCompteResponse> titulairesCompte;
+    private List<GetTransactionsCompteResponse> transactions;
 
     @Builder
     @Getter

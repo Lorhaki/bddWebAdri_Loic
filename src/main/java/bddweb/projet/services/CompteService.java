@@ -3,6 +3,7 @@ package bddweb.projet.services;
 import bddweb.projet.controllers.communs.BadRequestException;
 import bddweb.projet.entities.Client;
 import bddweb.projet.entities.Compte;
+import bddweb.projet.repositories.ClientsRepository;
 import bddweb.projet.repositories.ComptesRepository;
 //import bddweb.projet.services.dto.GetCompteResponse;
 import bddweb.projet.services.dto.comptes.CreateCompteRequest;
@@ -24,6 +25,9 @@ public class CompteService {
     @Autowired
     private ComptesRepository comptesRepository;
 
+    @Autowired
+    private ClientsRepository clientsRepository;
+
     public List<GetCompteResponse> getAllComptes(long idClient) {
         return this.comptesRepository
                 .findByTitulairesCompteId(idClient)
@@ -36,7 +40,10 @@ public class CompteService {
         Compte compteToSave = Compte.builder()
                 .intituleCompte(compteToCreate.getIntituleCompte())
                 .typeCompte(compteToCreate.getTypeCompte())
-                .titulairesComptes(compteToCreate.getTitulairesCompte())
+                .titulairesComptes(clientsRepository.findAllById(compteToCreate.getTitulairesCompte()
+                        .stream().
+                        map(c -> c.getIdClient()).
+                        collect(Collectors.toList())))
                 .build();
 
         return buildCreateCompteResponse(this.comptesRepository.save(compteToSave));
@@ -63,19 +70,19 @@ public class CompteService {
                                 .builder()
                                 .id(GTC.getIdTransaction())
                                 .source(GTC.getTypeS())
-                                .idSource((long) GTC.getIdSource())
+                                .idSource(GTC.getIdSource())
                                 .montant(abs(GTC.getMontant()))
                                 .typeTransaction(GTC.getTypeT())
                                 .build())
-                        .collect(Collectors.toList())
-                        .titulairesComptes(compte.getTitulairesComptes()
+                        .collect(Collectors.toList()))
+                .titulairesCompte(compte.getTitulairesComptes()
                         .stream()
                         .map(CPR -> GetCompteResponse.GetTitulairesCompteResponse
                                 .builder()
-                                .idClient(CPR.getIdClient())
+                                .idClient(CPR.getId())
                                 .build())
                         .collect(Collectors.toList()))
-                .build());
+                .build();
     }
 
 

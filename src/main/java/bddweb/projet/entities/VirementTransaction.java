@@ -7,6 +7,8 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 
 @Entity
@@ -14,9 +16,10 @@ import javax.persistence.Entity;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
 @DiscriminatorValue("V")
 public class VirementTransaction extends Transaction {
+    @Id
+    @GeneratedValue
     private long idVirement;
 
     private String libelleVirement;

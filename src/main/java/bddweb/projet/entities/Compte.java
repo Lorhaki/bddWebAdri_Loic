@@ -2,6 +2,7 @@ package bddweb.projet.entities;
 
 import lombok.*;
 
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Compte {
+public class
+Compte {
     @Id
     @GeneratedValue
     private long id ;
@@ -22,9 +24,11 @@ public class Compte {
     private TypeCompte typeCompte;
     @ManyToMany
     private List<Client> titulairesComptes;
-    @OneToMany
+
+    @OneToMany(mappedBy = "compte")
     private List<Transaction> transactions;
-    @OneToMany
+
+    @OneToMany(mappedBy = "compte")
     private List<Carte> cartes;
     private LocalDate dateCreation;
 }

@@ -40,7 +40,7 @@ public class ClientService {
 
     private GetClientResponse buildGetClientsResponse(Client client) {
         return GetClientResponse.builder().
-                id(client.getIdClient()).
+                id(client.getId()).
                 nom(client.getNom()).
                 prenom(client.getPrenom()).
                 adressePostale(client.getAdressePostale()).
@@ -51,7 +51,7 @@ public class ClientService {
     }
     private CreateClientResponse buildCreateClientResponse(Client client){
         return CreateClientResponse.builder().
-                id(client.getIdClient()).
+                id(client.getId()).
                 nom(client.getNom()).
                 prenom(client.getPrenom()).
                 adressePostale(client.getAdressePostale()).
@@ -74,7 +74,7 @@ public class ClientService {
 
     public PutClientResponse buildPutClientResponse(Client c){
         return PutClientResponse.builder()
-                .idClient((int) c.getIdClient())
+                .idClient((int) c.getId())
                 .prenom(c.getPrenom())
                 .nom(c.getNom())
                 .dateNaissance(c.getDateNaissance())
@@ -112,7 +112,7 @@ public class ClientService {
 
         Client c = clientOpt.get();
         Client toSave = Client.builder()
-                .idClient(c.getIdClient())
+                .id(c.getId())
                 .nom(request.getNom())
                 .prenom(request.getPrenom())
                 .dateNaissance(request.getDateNaissance())
